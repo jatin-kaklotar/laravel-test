@@ -2,9 +2,18 @@
 
 namespace App\Models;
 
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    use HasFactory;
+
+    /**
+     * Get the workshops for the event .
+     */
+    public function workshops()
+    {
+        return $this->hasMany(Workshop::class, 'event_id');
+    }
 }
